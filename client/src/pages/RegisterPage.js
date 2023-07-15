@@ -4,19 +4,14 @@ export default function RegisterPage(){
   const [password, setPassword] = useState('');
   async function register(ev) {
     ev.preventDefault();
-    await fetch('http ://localhost:4000/register',{
+    try{
+      await fetch('http://localhost:4000/register',{
       method: 'POST',
       body: JSON.stringify({username: username, password: password}),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization, Content-Length, X-Requested-With, X-HTTP-Method-Override, Accept',
-        'Access-Control-Allow-Credentials': 'true'
-      }
+      headers: { 'Content-Type': 'application/json',}
 
-    });
+    })}catch(e){
+      alert('Register failed');
     }
     return(
         <div className="register-container">
